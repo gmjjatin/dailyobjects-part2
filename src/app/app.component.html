@@ -1,15 +1,30 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div class="ui two column centered grid">
-  <div class="column">
-    <div class="ui segment">
-        <h2 class="ui header center aligned">
-
+<div class="ui grid">
+  <div class="sixteen wide column">
+    <div class="ui segment center aligned">
+      <h3 class="ui header">
       Dailyobjects Task Part 2
-    </h2>
-      </div>
+      </h3>
+    </div>
   </div>
-  <div class="four column centered row">
-    <div class="column">
+
+  <div class="four wide column centered">
+    <div class="ui segment center aligned">
+      <h5 *ngIf="code!=''; else elseBlock1" class="ui header">
+        {{code}}
+      </h5>
+      <ng-template #elseBlock1>
+      <h5 *ngIf="error; else elseBlock" class="ui header">
+        {{errorCode}}
+      </h5>
+      <ng-template #elseBlock>
+        <h5 class="ui header">
+          {{resultCode}}
+        </h5>
+      </ng-template>
+      </ng-template>
+    </div>
+
       <div class="ui placeholder segment">
       <div class="ui icon header">
         Click on the numbers
@@ -17,49 +32,49 @@
       <div class="inline">
         <div class="ui celled grid equal width">
           <div class="row center aligned">
-            <div class="column">
+            <div (click)="fetchCode('1')" class="column">
               1<br />@.?
             </div>
-            <div class="column">
+            <div (click)="fetchCode('2')" class="column">
               2<br />ABC
             </div>
-            <div class="column">
+            <div (click)="fetchCode('3')" class="column">
               3<br />DEF
             </div>
 
           </div>
           <div class="row center aligned">
-            <div class="column">
+            <div (click)="fetchCode('4')" class="column">
               4<br />GHI
             </div>
-            <div class="column">
+            <div (click)="fetchCode('5')" class="column">
               5<br />JKL
             </div>
-            <div class="column">
+            <div (click)="fetchCode('6')" class="column">
               6<br />MNO
             </div>
 
           </div>
           <div class="row center aligned">
-            <div class="column">
+            <div (click)="fetchCode('7')" class="column">
               7<br />PQRS
             </div>
-            <div class="column">
+            <div (click)="fetchCode('8')" class="column">
               8<br />TUV
             </div>
-            <div class="column">
+            <div (click)="fetchCode('9')" class="column">
               9<br />WXYZ
             </div>
 
           </div>
           <div class="row center aligned">
-            <div class="column">
+            <div (click)="matchSuperhero()" class="column">
               *<br /><span>send</span>
             </div>
-            <div class="column">
+            <div (click)="fetchCode('0')" class="column">
               0<br />Zero
             </div>
-            <div class="column">
+            <div (click)="fetchCode('#')" class="column">
               #<br /><span>space</span>
             </div>
 
@@ -69,7 +84,5 @@
 </div>
       </div>
     </div>
-</div>
-
   </div>
 </div>
