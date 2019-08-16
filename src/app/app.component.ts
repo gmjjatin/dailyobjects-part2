@@ -19,38 +19,28 @@ export class AppComponent {
     'BATMAN','HULK','BLADE','PHANTOM','SPIDERMAN','BLACKWIDOW','HELLBOY','PUNISHER'
   ];
 
-  noToLetterArray : Array<string> = [
-    '1',
-    'ABC',
-    'DEF',
-    'GHI',
-    'JKL',
-    'MNO',
-    'PQRS',
-    'TUV',
-    'WXYZ',
-    '*',
-    '0',
-    '#',
-  ];
+  noToLetterArray : any = {
+    'A':2,'B':2,'C':2,
+    'D':3,'E':3,'F':3,
+    'G':4,'H':4,'I':4,
+    'J':5,'K':5,'L':5,
+    'M':6,'N':6,'O':6,
+    'P':7,'Q':7,'R':7,'S':7,
+    'T':8,'U':8,'V':8,
+    'W':9,'X':9,'Y':9,'Z':9
+  };
 
   ngOnInit() {
-
       for(var i in this.arrayOfSuperhero){
         let superheroCharArray=this.arrayOfSuperhero[i].split('')
         let code=''
         for(var j in superheroCharArray){
-          for(var k in this.noToLetterArray){
-            if(this.noToLetterArray[k].match(superheroCharArray[j])){
-              code=code+(parseInt(k)+1)
-              break;
-            }
+              code=code+this.noToLetterArray[superheroCharArray[j]]
           }
-
-        }
         this.mapCodeToSuperhero.set(code,this.arrayOfSuperhero[i])
       }
-  }
+      console.log(this.mapCodeToSuperhero)
+    }
 
   fetchCode(code){
     this.resultCode='';
@@ -67,10 +57,9 @@ export class AppComponent {
       }
     }
     else if(this.code=='0'){
-      if(code!=='#'){
+      if(code!==' '){
         this.error=true;
         this.errorCode='Please enter \'space\' after \'0\' then enter code';
-        this.code=''
       }
       else{
         this.error=false;
@@ -83,7 +72,6 @@ export class AppComponent {
       if(code==='1'){
         this.error=true;
         this.errorCode='This number can\'t be used in code';
-        this.code=''
       }
       else{
         this.error=false;

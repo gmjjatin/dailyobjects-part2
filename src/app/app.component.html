@@ -10,24 +10,24 @@
 
   <div class="four wide column centered">
     <div class="ui segment center aligned">
-      <h5 *ngIf="code!=''; else elseBlock1" class="ui header">
-        {{code}}
-      </h5>
-      <ng-template #elseBlock1>
       <h5 *ngIf="error; else elseBlock" class="ui header">
         {{errorCode}}
       </h5>
       <ng-template #elseBlock>
-        <h5 class="ui header">
+        <h5 *ngIf="code!=''" class="ui header">
+          {{code}}
+        </h5>
+        <h5 *ngIf="resultCode!=''" class="ui header">
           {{resultCode}}
         </h5>
       </ng-template>
-      </ng-template>
+
     </div>
 
       <div class="ui placeholder segment">
       <div class="ui icon header">
         Click on the numbers
+        <br /><small>Code Format: 0(space)(code)</small>
       </div>
       <div class="inline">
         <div class="ui celled grid equal width">
@@ -74,7 +74,7 @@
             <div (click)="fetchCode('0')" class="column">
               0<br />Zero
             </div>
-            <div (click)="fetchCode('#')" class="column">
+            <div (click)="fetchCode(' ')" class="column">
               #<br /><span>space</span>
             </div>
 
