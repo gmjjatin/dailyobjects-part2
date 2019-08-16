@@ -4,3 +4,15 @@
 .ui span{
   color: grey;
 }
+
+.row.center.aligned .column:hover{
+  cursor: pointer;
+}
+.row.center.aligned .column:focus{
+  opacity: 0.8;
+  background-color: white;
+}
+.row.center.aligned .column:active{
+  opacity: 0.8;
+  background-color: white;
+}
